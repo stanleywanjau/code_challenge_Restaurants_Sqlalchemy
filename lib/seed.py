@@ -1,7 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Restaurant, Customer, Review, Base
+# from models import Restaurant, Customer, Review, Base
 from faker import Faker
+from model.Restraurant import Restaurant
+from model.Customer import Customer
+from model.Review import Review
+from model.Base import Base
+
 
 # Replace 'your_database_url' with the actual URL of your database.
 engine = create_engine('sqlite:///Restaurant.db')
@@ -33,7 +38,7 @@ def seed_data():
     session.commit()
 
     # Create Reviews
-    for _ in range(20):
+    for _ in range(30):
         review = Review(
             star_rating=fake.random_int(1, 5),
             restaurants=fake.random_element(restaurants),
