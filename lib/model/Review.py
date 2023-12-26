@@ -18,3 +18,7 @@ class Review(Base):
 
     def __repr__(self):
         return f"<Review(id={self.id}, star_rating={self.star_rating}, restaurant_id={self.restaurant_id}, customer_id={self.customer_id})>"
+    def customer(self):
+        return self.customers
+    def restaurant(self):
+        return self.restaurants
