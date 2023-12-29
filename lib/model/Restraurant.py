@@ -12,9 +12,15 @@ class Restaurant(Base):
     name = Column(String)
     price = Column(Integer)
     reviews = relationship('Review', back_populates='restaurants')
+    customers = relationship('Customer', secondary='reviews', back_populates='restaurants' ,viewonly=True)
 
     def __repr__(self):
         return f"<Restaurant(id={self.id}, name='{self.name}', price={self.price})>"
+    def review(self):
+        return self.reviews
+    def customer(self):
+        return self.customers
+        
 
 
 
