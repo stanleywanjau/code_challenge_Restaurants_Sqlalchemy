@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship,sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 # Base = declarative_base(
@@ -20,6 +20,11 @@ class Restaurant(Base):
         return self.reviews
     def customer(self):
         return self.customers
+    @classmethod
+    def fanciest(cls,session):
+        return session.query(cls).order_by(cls.price.desc()).first()
+    def all_reviews(self):
+        return [review.full_review() for review in self.reviews]
         
 
 

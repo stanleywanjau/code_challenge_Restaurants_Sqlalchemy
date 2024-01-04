@@ -8,7 +8,7 @@ from model.Review import Review
 from model.Base import Base
 
 
-# Replace 'your_database_url' with the actual URL of your database.
+
 engine = create_engine('sqlite:///Restaurant.db')
 Base.metadata.bind = engine
 
@@ -24,7 +24,7 @@ def seed_data():
     # Create Restaurants
     restaurants = []
     for _ in range(5):
-        restaurant = Restaurant(name=fake.company(), price=fake.random_int(1, 5))
+        restaurant = Restaurant(name=fake.company(), price=fake.random_int(1, 10))
         restaurants.append(restaurant)
         session.add(restaurant)
 
