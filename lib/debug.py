@@ -71,7 +71,8 @@ existing_restaurant = session.query(Restaurant).first()
 
 if existing_customer and existing_restaurant:
         # Add a new review for the existing customer and restaurant
-        existing_customer.add_review(restaurant=existing_restaurant, rating=5)
+        add_new_review=existing_customer.add_review(restaurant=existing_restaurant, rating=5)
+        session.add(add_new_review)
         session.commit()
 
         # Retrieve and print customer's reviews after adding a new review
